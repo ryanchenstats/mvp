@@ -95,9 +95,10 @@ def available_models():
 
 def load(name):
     """Loads a pre-trained model."""
-    assert name in _MODELS.keys(), "Model {} not available".format(name)
-    pretrained = cache_url(name, _MODELS[name])
+    # assert name in _MODELS.keys(), "Model {} not available".format(name)
+    # pretrained = cache_url(name, _MODELS[name])
     model_func = _MODEL_FUNCS[name.split("-")[0]]
     img_size = 256 if "-256-" in name else 224
-    model, _ = model_func(pretrained=pretrained, img_size=img_size)
+    model, _ = model_func(pretrained='/home/ubuntu/encoders/mvp_vit_b.pth', img_size=img_size)
+    # model, _ = model_func(pretrained='/shares/bcs516/ryan/encoders/mvp_vit_b.pth', img_size=img_size)
     return model
